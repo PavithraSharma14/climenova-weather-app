@@ -15,6 +15,9 @@ export default function SearchBox({updateInfo}) {
         try{
             let response = await fetch(`${API_URL}?q=${city}&appid=${API_KEY}&units=metric`);
             let jsonResponse = await response.json();
+            if (jsonResponse.cod === "404") {
+                 throw new Error("City not found");
+            }
             let result = {
             city: city,
             temp: jsonResponse.main.temp,
@@ -37,7 +40,7 @@ export default function SearchBox({updateInfo}) {
     let handleSubmit = async (evt) => {
         try {
             evt.preventDefault();
-            console.log(city);
+            setError(false);
             setCity("");
             let newInfo = await getWeatherInfo();
             updateInfo(newInfo);
