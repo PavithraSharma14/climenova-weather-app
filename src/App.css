@@ -1,0 +1,16 @@
+body {
+  background-image: url('assets/BACKGROUND_IMAGE.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.background-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45); 
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+
